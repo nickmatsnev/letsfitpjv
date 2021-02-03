@@ -87,7 +87,7 @@ public class VictorineController {
             });
             createBtn.setOnAction(e -> {
                 MegaController mc = new MegaController();
-                mc.toPage("createPage");
+                mc.toPage("createGame");
             });
             faqBtn.setOnAction(e -> {
                 MegaController mc = new MegaController();
@@ -95,7 +95,7 @@ public class VictorineController {
             });
             ratingBtn.setOnAction(e -> {
                 MegaController mc = new MegaController();
-                mc.toPage("ratingBtn");
+                mc.toPage("ratingPage");
             });
             exitBtn.setOnAction(e -> {
                 MegaController mc = new MegaController();

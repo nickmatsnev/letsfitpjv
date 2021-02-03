@@ -56,7 +56,7 @@ public class AboutController {
         });
         createBtn.setOnAction(e -> {
             MegaController mc = new MegaController();
-            mc.toPage("createPage");
+            mc.toPage("createGame");
         });
         faqBtn.setOnAction(e -> {
             MegaController mc = new MegaController();
@@ -64,7 +64,7 @@ public class AboutController {
         });
         ratingBtn.setOnAction(e -> {
             MegaController mc = new MegaController();
-            mc.toPage("ratingBtn");
+            mc.toPage("ratingPage");
         });
         exitBtn.setOnAction(e -> {
             MegaController mc = new MegaController();
