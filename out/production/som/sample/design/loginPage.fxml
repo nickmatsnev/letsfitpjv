@@ -51,7 +51,7 @@
                   <Font name="Yu Gothic Medium" size="10.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="28.0" layoutY="327.0" text="Click here and register yourself!" textFill="#3c94f2">
+            <Hyperlink fx:id="registerLabel" layoutX="28.0" layoutY="327.0" text="Click here and register yourself!" textFill="#3c94f2">
                <font>
                   <Font size="9.0" />
                </font>

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import sample.MegaController;
 import sample.Switcher;
 
 public class AboutController {
@@ -40,14 +41,47 @@ public class AboutController {
 
     @FXML
     void initialize() {
-        assert findBtn != null : "fx:id=\"findBtn\" was not injected: check your FXML file 'About.fxml'.";
-        assert createBtn != null : "fx:id=\"createBtn\" was not injected: check your FXML file 'About.fxml'.";
-        assert ratingBtn != null : "fx:id=\"ratingBtn\" was not injected: check your FXML file 'About.fxml'.";
-        assert faqBtn != null : "fx:id=\"faqBtn\" was not injected: check your FXML file 'About.fxml'.";
-        assert aboutBtn != null : "fx:id=\"aboutBtn\" was not injected: check your FXML file 'About.fxml'.";
-        assert profileBtn != null : "fx:id=\"profileBtn\" was not injected: check your FXML file 'About.fxml'.";
-        assert logoutBtn != null : "fx:id=\"logoutBtn\" was not injected: check your FXML file 'About.fxml'.";
-        assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'About.fxml'.";
+        assert findBtn != null : "fx:id=\"findBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+        assert createBtn != null : "fx:id=\"createBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+        assert ratingBtn != null : "fx:id=\"ratingBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+        assert faqBtn != null : "fx:id=\"faqBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+        assert aboutBtn != null : "fx:id=\"aboutBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+        assert profileBtn != null : "fx:id=\"profileBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+        assert logoutBtn != null : "fx:id=\"logoutBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+        assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+
+        aboutBtn.setOnAction(e -> {
+            MegaController mc = new MegaController();
+            mc.toPage("aboutPage");
+        });
+        createBtn.setOnAction(e -> {
+            MegaController mc = new MegaController();
+            mc.toPage("createPage");
+        });
+        faqBtn.setOnAction(e -> {
+            MegaController mc = new MegaController();
+            mc.toPage("faqPage");
+        });
+        ratingBtn.setOnAction(e -> {
+            MegaController mc = new MegaController();
+            mc.toPage("ratingBtn");
+        });
+        exitBtn.setOnAction(e -> {
+            MegaController mc = new MegaController();
+            mc.closePage();
+        });
+        logoutBtn.setOnAction(e -> {
+            MegaController mc = new MegaController();
+            mc.toPage("loginPage");
+        });
+        profileBtn.setOnAction(e -> {
+            MegaController mc = new MegaController();
+            mc.toPage("profilePage");
+        });
+        findBtn.setOnAction(e -> {
+            MegaController mc = new MegaController();
+            mc.toPage("findGame");
+        });
 
     }
 }

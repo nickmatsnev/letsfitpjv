@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
+import sample.MegaController;
 import sample.Questions;
 import sample.Switcher;
 
@@ -81,10 +82,39 @@ public class VictorineController {
     public void initialize() {
         try {
             aboutBtn.setOnAction(e -> {
-                Switcher.setSwitcher("about");
+                MegaController mc = new MegaController();
+                mc.toPage("aboutPage");
             });
+            createBtn.setOnAction(e -> {
+                MegaController mc = new MegaController();
+                mc.toPage("createPage");
+            });
+            faqBtn.setOnAction(e -> {
+                MegaController mc = new MegaController();
+                mc.toPage("faqPage");
+            });
+            ratingBtn.setOnAction(e -> {
+                MegaController mc = new MegaController();
+                mc.toPage("ratingBtn");
+            });
+            exitBtn.setOnAction(e -> {
+                MegaController mc = new MegaController();
+                mc.closePage();
+            });
+            logoutBtn.setOnAction(e -> {
+                MegaController mc = new MegaController();
+                mc.toPage("loginPage");
+            });
+            profileBtn.setOnAction(e -> {
+                MegaController mc = new MegaController();
+                mc.toPage("profilePage");
+            });
+            findBtn.setOnAction(e -> {
+                MegaController mc = new MegaController();
+                mc.toPage("findGame");
+            });
+
             answerBtn.setOnAction(e -> {
-                Switcher.setSwitcher("about");
                 RadioButton selectedRadioButton = (RadioButton) answers.getSelectedToggle();
                 if (selectedRadioButton != null) {
                     String toogleGroupValue = selectedRadioButton.getText();
