@@ -81,6 +81,7 @@ public class VictorineController {
     @FXML
     public void initialize() {
         try {
+
             aboutBtn.setOnAction(e -> {
                 MegaController mc = new MegaController();
                 mc.toPage("aboutPage");

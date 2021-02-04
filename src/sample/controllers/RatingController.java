@@ -7,6 +7,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import sample.CurrentUser;
+import sample.JDBCConnector;
 import sample.MegaController;
 
 public class RatingController {
@@ -71,36 +73,34 @@ public class RatingController {
         assert ratingColumn != null : "fx:id=\"ratingColumn\" was not injected: check your FXML file 'ratingPage.fxml'.";
         assert ratingGameColumn != null : "fx:id=\"ratingGameColumn\" was not injected: check your FXML file 'ratingPage.fxml'.";
         assert nameGameColumn != null : "fx:id=\"nameGameColumn\" was not injected: check your FXML file 'ratingPage.fxml'.";
+
+        JDBCConnector jc = new JDBCConnector();
+        nameAndScore.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
+
+        MegaController mc = new MegaController();
+
         aboutBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("aboutPage");
         });
         createBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("createGame");
         });
         faqBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("faqPage");
         });
         ratingBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("ratingPage");
         });
         exitBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.closePage();
         });
         logoutBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("loginPage");
         });
         profileBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("profilePage");
         });
         findBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("findGame");
         });
     }

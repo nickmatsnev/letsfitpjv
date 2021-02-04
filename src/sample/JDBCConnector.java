@@ -11,7 +11,7 @@ public class JDBCConnector {
     public int getScore(String username){
         try {
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC?useSSL=false", "matsnnik", "Torvald01");
+                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from player");
             while (rs.next()) {
@@ -29,7 +29,7 @@ public class JDBCConnector {
     public boolean loginCheck(String name, String password) {
         try {
             Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC?useSSL=false","matsnnik","Torvald01");
+                    "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC","matsnnik","Torvald01");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from player");
             while (rs.next()) {
@@ -49,9 +49,9 @@ public class JDBCConnector {
     public void setNewUser(String name, String password){
         try{
             Connection con= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC?useSSL=false","matsnnik","Torvald01");
+                    "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC","matsnnik","Torvald01");
             Statement stmt=con.createStatement();
-            String sql = "INSERT INTO Player " +
+            String sql = "INSERT INTO Player(username, password,score,games_created) " +
                     "VALUES ('" + name + "', '" + password + "','0','0')";
             stmt.executeUpdate(sql);
             con.close();

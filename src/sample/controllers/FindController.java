@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import sample.CurrentUser;
+import sample.JDBCConnector;
 import sample.MegaController;
 
 public class FindController {
@@ -78,36 +80,32 @@ public class FindController {
         assert typeCell != null : "fx:id=\"typeCell\" was not injected: check your FXML file 'findGame.fxml'.";
         assert ratingCell != null : "fx:id=\"ratingCell\" was not injected: check your FXML file 'findGame.fxml'.";
         assert viewBtn != null : "fx:id=\"viewBtn\" was not injected: check your FXML file 'findGame.fxml'.";
+
+        JDBCConnector jc = new JDBCConnector();
+        MegaController mc = new MegaController();
+        nameAndScore.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
         aboutBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("aboutPage");
         });
         createBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("createGame");
         });
         faqBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("faqPage");
         });
         ratingBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("ratingPage");
         });
         exitBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.closePage();
         });
         logoutBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("loginPage");
         });
         profileBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("profilePage");
         });
         findBtn.setOnAction(e -> {
-            MegaController mc = new MegaController();
             mc.toPage("findGame");
         });
     }

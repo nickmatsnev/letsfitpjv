@@ -1,13 +1,14 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../../FIT_CTU_2/BIE_PJV/finaltask/javafx-sdk-15.0.1/lib" />
+      <root url="file://$PATH_TO_FX$" />
+      <root url="jar://$PROJECT_DIR$/../../FIT_CTU_2/BIE_PJV/finaltask/database/mysql-connector-java-8.0.22.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/../../FIT_CTU_2/BIE_PJV/finaltask/javafx-sdk-15.0.1/lib" />
+      <root url="file://$PATH_TO_FX$" />
     </SOURCES>
-    <jarDirectory url="file://$PROJECT_DIR$/../../FIT_CTU_2/BIE_PJV/finaltask/javafx-sdk-15.0.1/lib" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/../../FIT_CTU_2/BIE_PJV/finaltask/javafx-sdk-15.0.1/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" />
+    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" type="SOURCES" />
   </library>
 </component>
