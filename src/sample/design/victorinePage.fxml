@@ -61,9 +61,9 @@
             <DropShadow />
          </effect>
          <children>
-            <ImageView fitHeight="59.0" fitWidth="158.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="172.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../FIT_CTU_2/BIE_PJV/finaltask/images/FIT_logo.png" />
+                  <Image url="@../images/FIT_logo.png" />
                </image>
             </ImageView>
             <VBox layoutX="2.0" layoutY="59.0" prefHeight="339.0" prefWidth="175.0">
@@ -95,7 +95,7 @@
             <DropShadow />
          </effect>
          <children>
-            <Label layoutX="192.0" layoutY="17.0" prefHeight="23.0" prefWidth="330.0" text="\%player.name% : %player.score%" textFill="WHITE">
+            <Label fx:id="nameAndScore" layoutX="192.0" layoutY="17.0" prefHeight="23.0" prefWidth="330.0" text="\%player.name% : %player.score%" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Medium" size="21.0" />
                </font>

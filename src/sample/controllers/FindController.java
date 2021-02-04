@@ -84,6 +84,11 @@ public class FindController {
         JDBCConnector jc = new JDBCConnector();
         MegaController mc = new MegaController();
         nameAndScore.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
+
+        viewBtn.setOnAction(e ->{
+            mc.toPage("victorinePage");
+        });
+
         aboutBtn.setOnAction(e -> {
             mc.toPage("aboutPage");
         });

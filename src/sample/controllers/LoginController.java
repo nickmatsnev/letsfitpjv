@@ -55,9 +55,9 @@ public class LoginController {
 
         loginBtn.setOnAction(e -> {
             if(jc.loginCheck(inputUser.getText(), inputPassword.getText())){
-                mc.toPage("profilePage");
                 CurrentUser.setUsername(inputUser.getText());
                 CurrentUser.setPassword(inputPassword.getText());
+                mc.toPage("profilePage");
             }
             else{
                 ifIncorrectLabel.setText("Sth wrong");

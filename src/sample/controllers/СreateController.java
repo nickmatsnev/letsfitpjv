@@ -7,9 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import sample.CurrentUser;
-import sample.JDBCConnector;
-import sample.MegaController;
+import sample.*;
 
 public class СreateController {
 
@@ -46,8 +44,6 @@ public class СreateController {
     @FXML
     private Button exitBtn;
 
-    @FXML
-    private Button prevQuestionBtn;
 
     @FXML
     private Button nextQuestionBtn;
@@ -71,7 +67,29 @@ public class СreateController {
     private Label counterLabel;
 
     @FXML
+    private Label alarmInput;
+
+    @FXML
+    private  Label shitTexttwo;
+
+    @FXML
+    private Label shitTextone;
+
+    @FXML
+    private Label headerText;
+
+    @FXML
+    private TextField gameNameInput;
+    @FXML
+    private Label successLabel;
+
+    private Questions[] questions = new Questions[7];
+
+    private int counterOfPages;
+
+    @FXML
     void initialize() {
+        counterOfPages = -1;
         assert nameAndScoreLabel != null : "fx:id=\"nameAndScoreLabel\" was not injected: check your FXML file 'createGame.fxml'.";
         assert findBtn != null : "fx:id=\"findBtn\" was not injected: check your FXML file 'createGame.fxml'.";
         assert createBtn != null : "fx:id=\"createBtn\" was not injected: check your FXML file 'createGame.fxml'.";
@@ -81,7 +99,6 @@ public class СreateController {
         assert profileBtn != null : "fx:id=\"profileBtn\" was not injected: check your FXML file 'createGame.fxml'.";
         assert logoutBtn != null : "fx:id=\"logoutBtn\" was not injected: check your FXML file 'createGame.fxml'.";
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'createGame.fxml'.";
-        assert prevQuestionBtn != null : "fx:id=\"prevQuestionBtn\" was not injected: check your FXML file 'createGame.fxml'.";
         assert nextQuestionBtn != null : "fx:id=\"nextQuestionBtn\" was not injected: check your FXML file 'createGame.fxml'.";
         assert inputQuestion != null : "fx:id=\"inputQuestion\" was not injected: check your FXML file 'createGame.fxml'.";
         assert correctAnswerInput != null : "fx:id=\"correctAnswerInput\" was not injected: check your FXML file 'createGame.fxml'.";
@@ -90,9 +107,12 @@ public class СreateController {
         assert wrongThree != null : "fx:id=\"wrongThree\" was not injected: check your FXML file 'createGame.fxml'.";
         assert counterLabel != null : "fx:id=\"counterLabel\" was not injected: check your FXML file 'createGame.fxml'.";
 
+        int show = counterOfPages + 1;
+
         JDBCConnector jc = new JDBCConnector();
 
         nameAndScoreLabel.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
+        counterLabel.setText(show + "/6");
 
         MegaController mc = new MegaController();
         aboutBtn.setOnAction(e -> {
@@ -120,5 +140,68 @@ public class СreateController {
             mc.toPage("findGame");
         });
 
+        nextQuestionBtn.setOnAction(e ->{
+            successLabel.setText("");
+            wrongOne.setVisible(true);
+            wrongThree.setVisible(true);
+            wrongTwo.setVisible(true);
+            correctAnswerInput.setVisible(true);
+            counterLabel.setVisible(true);
+            alarmInput.setVisible(true);
+            shitTextone.setVisible(true);
+            shitTexttwo.setVisible(true);
+            headerText.setVisible(true);
+            inputQuestion.setVisible(true);
+            gameNameInput.setVisible(true);
+            nextQuestionBtn.setText("Submit question");
+
+
+
+            counterOfPages += 1;
+
+            //check correctness of the input
+            if(inputQuestion.getText().equals("")
+                    || correctAnswerInput.getText().equals("")
+                    || wrongOne.getText().equals("")
+                    || wrongTwo.getText().equals("")
+                    || wrongThree.getText().equals("")
+                    || gameNameInput.getText().equals("")){
+            alarmInput.setText("Something is not filled");
+            }
+            else{
+                questions[counterOfPages] = new Questions(inputQuestion.getText(), new String[] {wrongOne.getText(), wrongTwo.getText(), wrongThree.getText(), correctAnswerInput.getText()});
+
+                System.out.println(questions[counterOfPages].getQuestion());
+                if(counterOfPages == 5){
+                    CurrentGame.setGamename(gameNameInput.getText());
+                    successLabel.setText("Congratulations!");
+                    wrongOne.setVisible(false);
+                    wrongThree.setVisible(false);
+                    wrongTwo.setVisible(false);
+                    correctAnswerInput.setVisible(false);
+                    counterLabel.setVisible(false);
+                    alarmInput.setVisible(false);
+                    shitTextone.setVisible(false);
+                    shitTexttwo.setVisible(false);
+                    headerText.setVisible(false);
+                    inputQuestion.setVisible(false);
+                    gameNameInput.setVisible(false);
+                    nextQuestionBtn.setText("New test");
+                    jc.setGameAndQuestions(questions, gameNameInput.getText());
+                }
+            }
+            inputQuestion.setText("");
+            wrongOne.setText("");
+            wrongTwo.setText("");
+            wrongThree.setText("");
+            correctAnswerInput.setText("");
+
+            inputQuestion.setPromptText("question");
+            wrongOne.setPromptText("wrong answer");
+            wrongTwo.setPromptText("wrong answer");
+            wrongThree.setPromptText("wrong answer");
+            correctAnswerInput.setPromptText("correct answer");
+
+        });
     }
 }
