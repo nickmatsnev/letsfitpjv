@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import sample.CurrentUser;
 import sample.MegaController;
 import sample.Switcher;
 
@@ -40,6 +42,9 @@ public class AboutController {
     private Button exitBtn;
 
     @FXML
+    private Label nameAndScoreLabel;
+
+    @FXML
     void initialize() {
         assert findBtn != null : "fx:id=\"findBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
         assert createBtn != null : "fx:id=\"createBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
@@ -49,6 +54,8 @@ public class AboutController {
         assert profileBtn != null : "fx:id=\"profileBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
         assert logoutBtn != null : "fx:id=\"logoutBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'aboutPage.fxml'.";
+
+        nameAndScoreLabel.setText(CurrentUser.getUsername() + " : " + CurrentUser.getScore());
 
         aboutBtn.setOnAction(e -> {
             MegaController mc = new MegaController();

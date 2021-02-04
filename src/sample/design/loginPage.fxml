@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
@@ -10,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane maxHeight="400" maxWidth="600" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LoginController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="575.0">
+<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.LoginController">
+   <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="575.0">
          <children>
             <ImageView fitHeight="409.0" fitWidth="635.0" layoutX="-18.0" pickOnBounds="true">
                <image>
@@ -29,7 +28,7 @@
                   <Image url="@../images/logo-ctu-gradient.png" />
                </image>
             </ImageView>
-            <Label layoutX="23.0" layoutY="10.0" prefHeight="36.0" prefWidth="278.0" text="Welcome to Let's FIT" textFill="WHITE">
+            <Label fx:id="ifIncorrectLabel" layoutX="23.0" layoutY="10.0" prefHeight="36.0" prefWidth="278.0" text="Welcome to Let's FIT" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Medium" size="25.0" />
                </font>
@@ -51,11 +50,7 @@
                   <Font name="Yu Gothic Medium" size="10.0" />
                </font>
             </Label>
-            <Hyperlink fx:id="registerLabel" layoutX="28.0" layoutY="327.0" text="Click here and register yourself!" textFill="#3c94f2">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Hyperlink>
+            <Button fx:id="registerBtn" layoutX="29.0" layoutY="338.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="click here and register yourself!" textFill="#b093f8" />
          </children></AnchorPane>
-  </items>
+   </items>
 </SplitPane>

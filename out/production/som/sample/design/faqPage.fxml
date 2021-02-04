@@ -11,14 +11,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="400" maxWidth="600" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="538.0" style="-fx-background-color: #347597;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.AboutController">
+<AnchorPane maxHeight="400" maxWidth="600" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="538.0" style="-fx-background-color: #347597;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.FaqController">
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="539.0" style="-fx-background-color: #2B6887;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <Label fx:id="nameAndScoreLabel" layoutX="192.0" layoutY="17.0" prefHeight="23.0" prefWidth="330.0" text="\%player.name% : %player.score%" textFill="WHITE">
+            <Label fx:id="nameAndScore" layoutX="192.0" layoutY="17.0" prefHeight="23.0" prefWidth="330.0" text="\%player.name% : %player.score%" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Medium" size="21.0" />
                </font>
@@ -40,11 +40,11 @@
                   <Button fx:id="findBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Find a game" textFill="WHITE" />
                   <Button fx:id="createBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Create a game" textFill="WHITE" />
                   <Button fx:id="ratingBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Rating" textFill="WHITE" />
-                  <Button fx:id="faqBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="FAQs" textFill="WHITE" />
-                  <Button fx:id="aboutBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="About developer" textFill="WHITE">
+                  <Button fx:id="faqBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="FAQs" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
+                  <Button fx:id="aboutBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="About developer" textFill="WHITE" />
                   <Button fx:id="profileBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Profile" textFill="WHITE" />
                   <Button fx:id="logoutBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Log out" textFill="WHITE" />
                   <Button fx:id="exitBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Exit" textFill="WHITE" />
@@ -52,20 +52,20 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Text fill="WHITE" layoutX="184.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I am student of Czech Technical University in Prague, Faculty of IT, Web and Software Engineering branch. This app is my study project in the subject BIE-PJV." wrappingWidth="330.4000000000001">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <Label layoutX="184.0" layoutY="69.0" text="About developer" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <Text fill="WHITE" layoutX="184.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I would be honoured, if you leave any commentary, in case of any questions do not hesitate to contact me via email at matsnnik@fit.cvut.cz" wrappingWidth="336.2142028808594" />
-      <Text fill="WHITE" layoutX="184.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You can find this project on GitHub: https://github.com/nickmatsnev/letsfit" wrappingWidth="330.4000000000001" />
-      <Line endX="234.79998779296875" endY="1.52587890625E-5" layoutX="285.0" layoutY="233.0" startX="-100.0" stroke="WHITE" />
-      <Line endX="236.39996337890625" layoutX="285.0" layoutY="296.0" startX="-100.0" stroke="WHITE" />
-      <Line endX="239.5999755859375" endY="1.52587890625E-5" layoutX="285.0" layoutY="99.0" startX="-100.0" stroke="WHITE" />
+      <AnchorPane layoutX="170.0" layoutY="59.0" prefHeight="339.0" prefWidth="368.0">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="What's going on?" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="21.0" />
+               </font>
+            </Label>
+            <Line endX="100.0" layoutX="115.0" layoutY="44.0" startX="-100.0" stroke="WHITE" />
+            <Text fill="WHITE" layoutX="15.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Everything is quiet simple. You create an account and therefore you can create tests and pass other players' tests. Rating principle is based on gaining as much visits as possible. The rating of the game is formed upon its popularity, while players can improve their rating by all games, created by them. To look for players or games use search tab. " wrappingWidth="342.9367370605469">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

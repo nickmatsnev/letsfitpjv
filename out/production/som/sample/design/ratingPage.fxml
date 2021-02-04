@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="400" maxWidth="600" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="538.0" style="-fx-background-color: #347597;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.RatingController">
+   <children>
+      <AnchorPane prefHeight="59.0" prefWidth="539.0" style="-fx-background-color: #2B6887;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label fx:id="nameAndScore" layoutX="192.0" layoutY="17.0" prefHeight="23.0" prefWidth="330.0" text="\%player.name% : %player.score%" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Medium" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-4.0" layoutY="1.0" prefHeight="400.0" prefWidth="167.0" style="-fx-background-color: #2B6887;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <ImageView fitHeight="176.0" fitWidth="158.0" layoutX="2.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/FIT_logo.png" />
+               </image>
+            </ImageView>
+            <VBox layoutX="2.0" layoutY="59.0" prefHeight="339.0" prefWidth="170.0">
+               <children>
+                  <Button fx:id="findBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Find a game" textFill="WHITE" />
+                  <Button fx:id="createBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Create a game" textFill="WHITE" />
+                  <Button fx:id="ratingBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Rating" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                  <Button fx:id="faqBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="FAQs" textFill="WHITE" />
+                  <Button fx:id="aboutBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="About developer" textFill="WHITE" />
+                  <Button fx:id="profileBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Profile" textFill="WHITE" />
+                  <Button fx:id="logoutBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Log out" textFill="WHITE" />
+                  <Button fx:id="exitBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Exit" textFill="WHITE" />
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="170.0" layoutY="59.0" prefHeight="339.0" prefWidth="366.0">
+         <children>
+            <Line endX="-99.80001831054688" endY="280.20001220703125" layoutX="283.0" layoutY="59.0" startX="-99.80001831054688" startY="-58.9999885559082" stroke="WHITE" />
+            <Line endX="-292.9999694824219" endY="-18.800003051757812" layoutX="294.0" layoutY="62.0" startX="72.4000244140625" startY="-18.800003051757812" stroke="WHITE" />
+            <Label layoutX="14.0" layoutY="14.0" text="Gamers" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="193.0" layoutY="14.0" text="Games" textFill="WHITE">
+               <font>
+                  <Font name="Yu Gothic Bold" size="18.0" />
+               </font>
+            </Label>
+            <TableView layoutX="1.0" layoutY="44.0" prefHeight="295.0" prefWidth="182.0">
+              <columns>
+                <TableColumn fx:id="usernameColumn" prefWidth="91.99993896484375" text="Username" />
+                <TableColumn fx:id="ratingColumn" prefWidth="88.0" text="Rating" />
+              </columns>
+            </TableView>
+            <TableView fx:id="ratingGameColumn" layoutX="183.0" layoutY="44.0" prefHeight="295.0" prefWidth="182.0">
+               <columns>
+                  <TableColumn fx:id="nameGameColumn" prefWidth="91.99993896484375" text="Name" />
+                  <TableColumn prefWidth="88.79995727539062" text="Rating" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
