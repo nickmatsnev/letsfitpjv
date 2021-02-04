@@ -13,14 +13,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="400" maxWidth="600" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="538.0" style="-fx-background-color: #347597;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="400" maxWidth="600" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="538.0" style="-fx-background-color: #347597;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.FindController">
    <children>
       <AnchorPane prefHeight="59.0" prefWidth="539.0" style="-fx-background-color: #2B6887;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <Label layoutX="192.0" layoutY="17.0" prefHeight="23.0" prefWidth="330.0" text="\%player.name% : %player.score%" textFill="WHITE">
+            <Label fx:id="nameAndScore" layoutX="192.0" layoutY="17.0" prefHeight="23.0" prefWidth="330.0" text="\%player.name% : %player.score%" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Medium" size="21.0" />
                </font>
@@ -40,30 +40,30 @@
             <Line endX="100.0" layoutX="72.0" layoutY="58.0" startX="-100.0" stroke="WHITE" />
             <VBox layoutX="2.0" layoutY="59.0" prefHeight="339.0" prefWidth="170.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Find a game" textFill="WHITE">
+                  <Button fx:id="findBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Find a game" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Create a game" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Rating" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="FAQs" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="About developer" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Profile" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Log out" textFill="WHITE" />
-                  <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Exit" textFill="WHITE" />
+                  <Button fx:id="createBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Create a game" textFill="WHITE" />
+                  <Button fx:id="ratingBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Rating" textFill="WHITE" />
+                  <Button fx:id="faqBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="FAQs" textFill="WHITE" />
+                  <Button fx:id="aboutBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="About developer" textFill="WHITE" />
+                  <Button fx:id="profileBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Profile" textFill="WHITE" />
+                  <Button fx:id="logoutBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #275F7E; -fx-border-color: transparent; -fx-padding: 100%;" text="Log out" textFill="WHITE" />
+                  <Button fx:id="exitBtn" mnemonicParsing="false" prefHeight="42.0" prefWidth="172.0" style="-fx-background-color: #2B6887; -fx-border-color: transparent; -fx-padding: 100%;" text="Exit" textFill="WHITE" />
                </children>
             </VBox>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="170.0" layoutY="59.0" prefHeight="339.0" prefWidth="367.0">
          <children>
-            <TextField layoutX="14.0" layoutY="55.0" prefHeight="26.0" prefWidth="264.0" promptText="Type username or name of the game" />
+            <TextField fx:id="searchInput" layoutX="14.0" layoutY="55.0" prefHeight="26.0" prefWidth="264.0" promptText="Type username or name of the game" />
             <Label layoutX="14.0" layoutY="14.0" text="Find a game or a player" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="278.0" layoutY="56.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #275F7E; -fx-border-color: white;" text="Search!" textFill="WHITE">
+            <Button fx:id="searchBtn" layoutX="278.0" layoutY="56.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #275F7E; -fx-border-color: white;" text="Search!" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
@@ -73,22 +73,22 @@
                   <ScrollBar layoutX="323.0" layoutY="2.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="14.0" />
                   <HBox layoutX="14.0" layoutY="42.0" prefHeight="59.0" prefWidth="307.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="59.0" prefWidth="65.0" text="\%Name%" textFill="WHITE">
+                        <Label fx:id="nameCell" alignment="CENTER" prefHeight="59.0" prefWidth="65.0" text="\%Name%" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="71.0" prefWidth="88.0" text="\%Type%" textFill="WHITE">
+                        <Label fx:id="typeCell" alignment="CENTER" prefHeight="71.0" prefWidth="88.0" text="\%Type%" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="59.0" prefWidth="90.0" text="\%Rating%" textFill="WHITE">
+                        <Label fx:id="ratingCell" alignment="CENTER" prefHeight="59.0" prefWidth="90.0" text="\%Rating%" textFill="WHITE">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="57.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="View" textFill="WHITE" />
+                        <Button fx:id="viewBtn" mnemonicParsing="false" prefHeight="58.0" prefWidth="57.0" style="-fx-background-color: transparent; -fx-border-color: white;" text="View" textFill="WHITE" />
                      </children>
                   </HBox>
                   <Line endX="-5.699981689453125" endY="-129.99998474121094" layoutX="93.0" layoutY="133.0" startX="-5.699981689453125" startY="76.39996337890625" stroke="WHITE" />
