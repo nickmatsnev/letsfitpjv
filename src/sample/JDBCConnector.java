@@ -24,6 +24,8 @@ public class JDBCConnector {
                         + "', '" + questions[i].getAnswers()[2] + "', '" + CurrentGame.getGamename() + "')";
                 stmt.executeUpdate(questionInsert);
             }
+            setScore(CurrentUser.getUsername(), CurrentUser.getScore() + 1);
+            CurrentUser.setScore(CurrentUser.getScore() + 1);
 
             con.close();
         }

@@ -85,11 +85,10 @@ public class СreateController {
 
     private Questions[] questions = new Questions[7];
 
-    private int counterOfPages;
+    private int counterOfPages = -1;
 
     @FXML
     void initialize() {
-        counterOfPages = -1;
         assert nameAndScoreLabel != null : "fx:id=\"nameAndScoreLabel\" was not injected: check your FXML file 'createGame.fxml'.";
         assert findBtn != null : "fx:id=\"findBtn\" was not injected: check your FXML file 'createGame.fxml'.";
         assert createBtn != null : "fx:id=\"createBtn\" was not injected: check your FXML file 'createGame.fxml'.";
@@ -112,6 +111,7 @@ public class СreateController {
         JDBCConnector jc = new JDBCConnector();
 
         nameAndScoreLabel.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
+        counterLabel.setText("");
         counterLabel.setText(show + "/6");
 
         MegaController mc = new MegaController();
