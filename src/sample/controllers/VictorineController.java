@@ -158,7 +158,6 @@ public class VictorineController {
 
                         selectedRadioButton.setSelected(false);
                     }
-
                 }
             });
         }

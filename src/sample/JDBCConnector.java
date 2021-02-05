@@ -184,19 +184,21 @@ public class JDBCConnector {
     }
     public String getBestGame(String username){
         try {
+            String result = "";
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select max(game_name) from game where creator_username='" + CurrentUser.getUsername() + "' limit 1;");
-            String result = rs.getString("max(game_name)");
+            while(rs.next()){
+                result = rs.getString(1);
+            }
             con.close();
-
             return result;
         } catch (Exception e) {
             System.out.println(e);
             System.out.println("best game connection is failed");
         }
-        return "0";
+        return "empty";
     }
 
     public void setGameAndQuestions(Questions[] questions, String gameName ){
@@ -294,6 +296,45 @@ public class JDBCConnector {
             System.out.println(e);
         }
     }
+
+    public int getGamesCreatedByName(String username){
+        try{
+        int factor = 0;
+        Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC","matsnnik","Torvald01");
+        Statement stmt=con.createStatement();
+        String request = "select games_created from player where username='" + username + "' limit 1";
+        ResultSet rs = stmt.executeQuery(request);
+        while (rs.next()) {
+            factor = rs.getInt("games_created");
+        }
+        con.close();
+        return factor;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public void incrementCreatedGames(String username){
+        try{
+            int factor = 0;
+            Connection con= DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC","matsnnik","Torvald01");
+            Statement stmt=con.createStatement();
+            factor = getGamesCreatedByName(username);
+            String sql = "UPDATE player SET games_created=" + factor + " where username='" + username +"'";
+            stmt.executeUpdate(sql);
+            con.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+
     public void setScoreGame(String name, int score){
         try{
             Connection con= DriverManager.getConnection(

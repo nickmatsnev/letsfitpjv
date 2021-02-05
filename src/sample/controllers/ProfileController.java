@@ -94,8 +94,8 @@ public class ProfileController {
         MegaController mc = new MegaController();
 
         usernameLabel.setText(CurrentUser.getUsername());
-        playedGamesScore.setText("Played games in total: " + Integer.toString(CurrentUser.getScore()));
-        createdGamesScore.setText("Created games in total: " + Integer.toString(CurrentUser.getGames_created()));
+        playedGamesScore.setText("Played games in total: " + jc.getGamesCreatedByName(CurrentUser.getUsername()));
+        createdGamesScore.setText("Created games in total: " + jc.getGamesCreatedByName(CurrentUser.getUsername()));
         mostPopularGame.setText("Most popular game: " + jc.getBestGame(CurrentUser.getUsername()));
 
         resetBtn.setOnAction(e -> {

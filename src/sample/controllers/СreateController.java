@@ -189,6 +189,7 @@ public class СreateController {
                     gameNameInput.setVisible(false);
                     nextQuestionBtn.setText("New test");
 
+                    jc.incrementCreatedGames(CurrentUser.getUsername());
                     jc.setScorePlayer(CurrentUser.getUsername(), jc.getScoreByUsername(CurrentUser.getUsername()) + 1);
                     jc.setGameAndQuestions(questions, gameNameInput.getText());
                 }
