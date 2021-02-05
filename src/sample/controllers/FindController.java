@@ -2,11 +2,14 @@ package sample.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import sample.CurrentUser;
+import sample.Game;
 import sample.JDBCConnector;
 import sample.MegaController;
 
@@ -52,16 +55,16 @@ public class FindController {
     private Button searchBtn;
 
     @FXML
-    private Label nameCell;
+    private TableView<Game> outputTable;
 
     @FXML
-    private Label typeCell;
+    private TableColumn<Game, String> nameColumn;
 
     @FXML
-    private Label ratingCell;
+    private TableColumn<Game, Integer> scoreColumn;
 
     @FXML
-    private Button viewBtn;
+    private TableColumn<Game, String> creatorColumn;
 
     @FXML
     void initialize() {
@@ -76,18 +79,27 @@ public class FindController {
         assert exitBtn != null : "fx:id=\"exitBtn\" was not injected: check your FXML file 'findGame.fxml'.";
         assert searchInput != null : "fx:id=\"searchInput\" was not injected: check your FXML file 'findGame.fxml'.";
         assert searchBtn != null : "fx:id=\"searchBtn\" was not injected: check your FXML file 'findGame.fxml'.";
-        assert nameCell != null : "fx:id=\"nameCell\" was not injected: check your FXML file 'findGame.fxml'.";
-        assert typeCell != null : "fx:id=\"typeCell\" was not injected: check your FXML file 'findGame.fxml'.";
-        assert ratingCell != null : "fx:id=\"ratingCell\" was not injected: check your FXML file 'findGame.fxml'.";
-        assert viewBtn != null : "fx:id=\"viewBtn\" was not injected: check your FXML file 'findGame.fxml'.";
 
         JDBCConnector jc = new JDBCConnector();
         MegaController mc = new MegaController();
         nameAndScore.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
 
-        viewBtn.setOnAction(e ->{
-            mc.toPage("victorinePage");
+
+        outputTable.setEditable(true);
+        searchBtn.setOnAction(e ->{
+            if(searchInput.getText().equals("")){
+                searchInput.setPromptText("First input something!");
+            }
+            else{
+                ObservableList<Game> games = FXCollections.observableArrayList(jc.gamesByName(searchInput.getText()));
+                nameColumn.setCellValueFactory(new PropertyValueFactory<Game, String>("name"));
+                scoreColumn.setCellValueFactory(new PropertyValueFactory<Game, Integer>("score"));
+                creatorColumn.setCellValueFactory(new PropertyValueFactory<Game, String>("creatorName"));
+                outputTable.setItems(games);
+            }
+
         });
+
 
         aboutBtn.setOnAction(e -> {
             mc.toPage("aboutPage");

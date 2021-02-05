@@ -1,15 +1,19 @@
 package sample.controllers;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
+
+import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import sample.CurrentUser;
-import sample.JDBCConnector;
-import sample.MegaController;
+import javafx.scene.control.cell.PropertyValueFactory;
+import sample.*;
 
 public class RatingController {
 
@@ -47,16 +51,22 @@ public class RatingController {
     private Button exitBtn;
 
     @FXML
-    private TableColumn<?, ?> usernameColumn;
+    private TableView<Player> ratingTable = new TableView<Player>();
 
     @FXML
-    private TableColumn<?, ?> ratingColumn;
+    private TableColumn<Player, String> usernameColumn;
 
     @FXML
-    private TableView<?> ratingGameColumn;
+    private TableColumn<Player, Integer> ratingColumn;
 
     @FXML
-    private TableColumn<?, ?> nameGameColumn;
+    private TableView<Game> ratingGameColumn;
+
+    @FXML
+    private TableColumn<Game, String> nameGameColumn;
+    @FXML
+    private TableColumn<Game, Integer> scoreGameColumn;
+
 
     @FXML
     void initialize() {
@@ -103,5 +113,26 @@ public class RatingController {
         findBtn.setOnAction(e -> {
             mc.toPage("findGame");
         });
+
+
+        ratingTable.setEditable(true);
+
+        ratingGameColumn.setEditable(true);
+
+
+
+        //ObservableList<Stavka> oListStavaka = FXCollections.observableArrayList(listStavaka);
+        ObservableList<Player> players = FXCollections.observableArrayList(jc.bestUsers());
+        ObservableList<Game> games = FXCollections.observableArrayList(jc.bestGames());
+
+        //table.setEditable(true);
+        usernameColumn.setCellValueFactory( new PropertyValueFactory<Player, String>("username"));
+        ratingColumn.setCellValueFactory( new PropertyValueFactory<Player, Integer>("score"));
+
+        nameGameColumn.setCellValueFactory( new PropertyValueFactory<Game, String>("name"));
+        scoreGameColumn.setCellValueFactory(new PropertyValueFactory<Game, Integer>("score"));
+        ratingTable.setItems(players);
+        ratingGameColumn.setItems(games);
+
     }
 }

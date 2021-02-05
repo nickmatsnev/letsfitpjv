@@ -1,11 +1,86 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JDBCConnector {
+
+    public List<Game> gamesByName(String input){
+        try {
+
+            List<Game> games = new ArrayList<Game>();
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from game where game_name='" + input + "'");
+
+            System.out.println("this is gamesByName");
+            while (rs.next()) {
+                int score = rs.getInt("played_times");
+                String name = rs.getString("game_name");
+                String creatorName = rs.getString("creator_username");
+                System.out.println(name + " : " + score + " by " + creatorName);
+                games.add(new Game(name, score, creatorName));
+            }
+            con.close();
+            return games;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public List<Game> bestGames(){
+        try {
+
+            List<Game> games = new ArrayList<Game>();
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from game order by played_times DESC");
+
+            System.out.println("this is bestGames");
+            while (rs.next()) {
+                int score = rs.getInt("played_times");
+                String name = rs.getString("game_name");
+                System.out.println(name + " : " + score);
+                games.add(new Game(name, score));
+            }
+            con.close();
+            return games;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public List<Player> bestUsers(){
+        try {
+
+            List<Player> players = new ArrayList<Player>();
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from player order by score DESC");
+            while (rs.next()) {
+                int score = rs.getInt("score");
+                String name = rs.getString("username");
+                players.add(new Player(name, score));
+            }
+            con.close();
+            return players;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
 
     public void setNewPassword( String password){
         try{
@@ -34,6 +109,7 @@ public class JDBCConnector {
             return result;
         } catch (Exception e) {
             System.out.println(e);
+            System.out.println("best game connection is failed");
         }
         return "0";
     }
