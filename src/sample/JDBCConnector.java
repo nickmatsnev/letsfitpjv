@@ -77,17 +77,15 @@ public class JDBCConnector {
             ResultSet rs = stmt.executeQuery("select * from question where game_name='" + name + "'");
 
             System.out.println("this is setUpGame");
-            int counter = 0;
             while (rs.next()) {
                 gottenAnswers[0] = rs.getString("wrong_answer_one");
                 gottenAnswers[1] = rs.getString("wrong_answer_two");
                 gottenAnswers[2] = rs.getString("wrong_answer_three");
                 gottenAnswers[3] = rs.getString("correct_answer");
                 String question = rs.getString("question");
-                gottenQuestions.add(new Questions(question, gottenAnswers));
                 System.out.println(question + " ? " + gottenAnswers[0] + " , " + gottenAnswers[1] + " , "+ gottenAnswers[2] + " , "
                         + gottenAnswers[3] + " , ");
-                counter++;
+                gottenQuestions.add(new Questions(question, gottenAnswers));
             }
             con.close();
             return gottenQuestions;

@@ -80,7 +80,7 @@
             <TextField fx:id="wrongOne" layoutX="24.0" layoutY="170.0" prefHeight="26.0" prefWidth="207.0" promptText="Wrong answer" />
             <TextField fx:id="wrongTwo" layoutX="24.0" layoutY="206.0" prefHeight="26.0" prefWidth="207.0" promptText="Wrong answer" />
             <TextField fx:id="wrongThree" layoutX="24.0" layoutY="243.0" prefHeight="26.0" prefWidth="207.0" promptText="Wrong answer" />
-            <Label fx:id="counterLabel" layoutX="288.0" layoutY="14.0" text="1...5/5" textFill="WHITE">
+            <Label fx:id="counterLabel" layoutX="288.0" layoutY="14.0" text="0/6" textFill="WHITE">
                <font>
                   <Font name="Yu Gothic Light" size="20.0" />
                </font>

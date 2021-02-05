@@ -140,12 +140,15 @@ public class VictorineController {
 
                         question_text.setText("You had answered correctly " + correctAnswers + " out of " + questions.size() + " questions!");
                     } else {
+                        Questions[] array = new Questions[questions.size()];
+                        questions.toArray(array); // fill the array
+
+
                         nowQuestion++;
-                        nowCorrectAnswer = questions.get(nowQuestion).correctAnswer();
+                        nowCorrectAnswer = array[nowQuestion].correctAnswer();
 
-                        question_text.setText(questions.get(nowQuestion).getQuestion());
-                        String[] answers = questions.get(nowQuestion).getAnswers();
-
+                        question_text.setText(array[nowQuestion].getQuestion());
+                        String[] answers = array[nowQuestion].getAnswers();
 
                         List<String> intList = Arrays.asList(answers);
 

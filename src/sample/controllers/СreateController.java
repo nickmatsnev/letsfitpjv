@@ -86,6 +86,7 @@ public class СreateController {
     private Questions[] questions = new Questions[7];
 
     private int counterOfPages = -1;
+    private int show = 1;
 
     @FXML
     void initialize() {
@@ -106,13 +107,11 @@ public class СreateController {
         assert wrongThree != null : "fx:id=\"wrongThree\" was not injected: check your FXML file 'createGame.fxml'.";
         assert counterLabel != null : "fx:id=\"counterLabel\" was not injected: check your FXML file 'createGame.fxml'.";
 
-        int show = counterOfPages + 1;
 
         JDBCConnector jc = new JDBCConnector();
 
         nameAndScoreLabel.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
-        counterLabel.setText("");
-        counterLabel.setText(show + "/6");
+
 
         MegaController mc = new MegaController();
         aboutBtn.setOnAction(e -> {
@@ -141,6 +140,9 @@ public class СreateController {
         });
 
         nextQuestionBtn.setOnAction(e ->{
+            counterLabel.setText("");
+            counterLabel.setText(show + "/6");
+            show+=1;
             successLabel.setText("");
             wrongOne.setVisible(true);
             wrongThree.setVisible(true);
