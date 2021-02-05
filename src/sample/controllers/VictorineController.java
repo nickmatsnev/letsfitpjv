@@ -6,9 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
-import sample.MegaController;
-import sample.Questions;
-import sample.Switcher;
+import sample.*;
 
 import java.awt.event.ActionEvent;
 import java.sql.Connection;
@@ -66,14 +64,8 @@ public class VictorineController {
     @FXML
     private Button exitBtn;
 
-    private Questions[] questions = new Questions[] {
-            new Questions("What is a correct way to output some data in the console?", new String[] {"Console.Write()", "console.log()", "print()", "System.out.println()"}),
-            new Questions("Which data type has only two values?", new String[] {"String", "Float", "Boolean", "Integer"}),
-            new Questions("What is correct form of assigning some data to an element of two dimensioned array?", new String[] {"a(0)(0) = 1;", "a[0 0] = 1;", "a{0}{0} = 1;", "a[0][0] = 1;"}),
-            new Questions("Which method allows to run applications on Java?", new String[] {"THere is no main method", "From the class, which was written first and from its methods", "Any, you can manage it in the project settings", "From method 'main' in any of the classes"}),
-            new Questions("Every file should be called...", new String[] {"By the name of the first library", "By the name of the package", "How you want", "By the name of the class"}),
-            new Questions("How much parameters function can have as arguments?", new String[] {"5", "10", "20", "Infinitely many"})
-    };
+    JDBCConnector jdb = new JDBCConnector();
+    private List<Questions> questions = jdb.setUpGame(CurrentGame.getGamename());
 
     private int nowQuestion = 0, correctAnswers;
     private String nowCorrectAnswer;
@@ -128,20 +120,20 @@ public class VictorineController {
                     }
 
                     // The last question
-                    if (nowQuestion + 1 == questions.length) {
+                    if (nowQuestion + 1 == questions.size()) {
                         radio_btn_1.setVisible(false);
                         radio_btn_2.setVisible(false);
                         radio_btn_3.setVisible(false);
                         radio_btn_4.setVisible(false);
                         answerBtn.setVisible(false);
 
-                        question_text.setText("You had answered correctly " + correctAnswers + " out of " + questions.length + " questions!");
+                        question_text.setText("You had answered correctly " + correctAnswers + " out of " + questions.size() + " questions!");
                     } else {
                         nowQuestion++;
-                        nowCorrectAnswer = questions[nowQuestion].correctAnswer();
+                        nowCorrectAnswer = questions.get(nowQuestion).correctAnswer();
 
-                        question_text.setText(questions[nowQuestion].getQuestion());
-                        String[] answers = questions[nowQuestion].getAnswers();
+                        question_text.setText(questions.get(nowQuestion).getQuestion());
+                        String[] answers = questions.get(nowQuestion).getAnswers();
 
 
                         List<String> intList = Arrays.asList(answers);

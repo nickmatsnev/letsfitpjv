@@ -3,8 +3,6 @@ package sample;
 public class CurrentGame {
     //here will be contained info about runned game
     public static String gamename;
-    public static String gamerating;
-    public static Questions questions;
 
     public static String getGamename() {
         return gamename;

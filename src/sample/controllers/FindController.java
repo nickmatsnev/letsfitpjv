@@ -8,10 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import sample.CurrentUser;
-import sample.Game;
-import sample.JDBCConnector;
-import sample.MegaController;
+import sample.*;
 
 public class FindController {
 
@@ -99,7 +96,10 @@ public class FindController {
             }
 
         });
-
+        nameColumn.setOnEditStart(e -> {
+            CurrentGame.setGamename(searchInput.getText());
+            mc.toPage("victorinePage");
+        });
 
         aboutBtn.setOnAction(e -> {
             mc.toPage("aboutPage");

@@ -11,6 +11,13 @@ public class Questions {
     }
 
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public void setAnswers(String[] answers) {
+        this.answers = answers;
+    }
 
     public String correctAnswer() {
         return this.answers[answers.length - 1];
