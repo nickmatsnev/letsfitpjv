@@ -1,10 +1,10 @@
 package sample;
 
 public class CurrentUser {
-    public static String username;
+    private static String username;
     private static String password;
-    public static int score;
-    public static int games_created;
+    private static int score;
+    private static int games_created;
 
     public CurrentUser(String username, String password) {
         this.username = username;

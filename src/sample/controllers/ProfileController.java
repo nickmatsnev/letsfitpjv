@@ -93,6 +93,36 @@ public class ProfileController {
         nameAndScore.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
         MegaController mc = new MegaController();
 
+        usernameLabel.setText(CurrentUser.getUsername());
+        playedGamesScore.setText("Played games in total: " + Integer.toString(CurrentUser.getScore()));
+        createdGamesScore.setText("Created games in total: " + Integer.toString(CurrentUser.getGames_created()));
+        mostPopularGame.setText("Most popular game: " + jc.getBestGame(CurrentUser.getUsername()));
+
+        resetBtn.setOnAction(e -> {
+            if(oldPasswordInput.getText().equals("")||
+            newPasswordInput.getText().equals("") ||
+            repeatPasswordInput.getText().equals("")){
+                usernameLabel.setText("Wrong input");
+            }
+            else{
+                if(newPasswordInput.getText().equals(repeatPasswordInput.getText())){
+                    CurrentUser.setPassword(repeatPasswordInput.getText());
+                    jc.setNewPassword(repeatPasswordInput.getText());
+                    newPasswordInput.setText("");
+                    newPasswordInput.setPromptText("New password");
+                    repeatPasswordInput.setText("");
+                    repeatPasswordInput.setPromptText("Repeat the new password");
+                    oldPasswordInput.setText("");
+                    oldPasswordInput.setPromptText("Old password");
+                    System.out.println("Successfully updated pswrd");
+
+                }
+                else{
+                    usernameLabel.setText("ERROR!");
+                }
+            }
+        });
+
         aboutBtn.setOnAction(e -> {
             mc.toPage("aboutPage");
         });

@@ -7,6 +7,36 @@ import java.sql.Statement;
 
 public class JDBCConnector {
 
+    public void setNewPassword( String password){
+        try{
+            Connection con= DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC","matsnnik","Torvald01");
+            Statement stmt=con.createStatement();
+
+            String sql = "UPDATE Player SET password='" + password + "' where username='" + CurrentUser.getUsername() +"'";
+            stmt.executeUpdate(sql);
+            con.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+    public String getBestGame(String username){
+        try {
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select max(game_name) from game where creator_username='" + CurrentUser.getUsername() + "' limit 1;");
+            String result = rs.getString("max(game_name)");
+            con.close();
+
+            return result;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return "0";
+    }
 
     public void setGameAndQuestions(Questions[] questions, String gameName ){
         try{
