@@ -174,6 +174,7 @@ public class СreateController {
                 System.out.println(questions[counterOfPages].getQuestion());
                 if(counterOfPages == 5){
                     CurrentGame.setGamename(gameNameInput.getText());
+
                     successLabel.setText("Congratulations!");
                     wrongOne.setVisible(false);
                     wrongThree.setVisible(false);
@@ -187,6 +188,8 @@ public class СreateController {
                     inputQuestion.setVisible(false);
                     gameNameInput.setVisible(false);
                     nextQuestionBtn.setText("New test");
+
+                    jc.setScorePlayer(CurrentUser.getUsername(), jc.getScoreByUsername(CurrentUser.getUsername()) + 1);
                     jc.setGameAndQuestions(questions, gameNameInput.getText());
                 }
             }

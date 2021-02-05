@@ -3,6 +3,7 @@ package sample.controllers;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
@@ -64,6 +65,9 @@ public class VictorineController {
     @FXML
     private Button exitBtn;
 
+    @FXML
+    private Label nameAndScore;
+
     JDBCConnector jdb = new JDBCConnector();
     private List<Questions> questions = jdb.setUpGame(CurrentGame.getGamename());
 
@@ -73,6 +77,8 @@ public class VictorineController {
     @FXML
     public void initialize() {
         try {
+
+            nameAndScore.setText(CurrentUser.getUsername() + " / " + jdb.getScoreByUsername(CurrentUser.getUsername()));
 
             aboutBtn.setOnAction(e -> {
                 MegaController mc = new MegaController();
@@ -126,6 +132,11 @@ public class VictorineController {
                         radio_btn_3.setVisible(false);
                         radio_btn_4.setVisible(false);
                         answerBtn.setVisible(false);
+
+                        jdb.setScoreGame(CurrentGame.getGamename(), jdb.getScoreByGameName(CurrentGame.getGamename()) + 1);
+
+                        jdb.setScorePlayer(jdb.getPlayerByGame(CurrentGame.getGamename()),
+                                jdb.getScoreByUsername(jdb.getPlayerByGame(CurrentGame.getGamename())) + 1);
 
                         question_text.setText("You had answered correctly " + correctAnswers + " out of " + questions.size() + " questions!");
                     } else {

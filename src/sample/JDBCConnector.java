@@ -12,11 +12,65 @@ import java.util.List;
 
 public class JDBCConnector {
 
+    public Integer getScoreByUsername(String username){
+        try {
+            int result = 0;
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select score from player where username='" + username + "' limit 1");
+            while (rs.next()) {
+                result = rs.getInt("score");
+            }
+            con.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public Integer getScoreByGameName(String name){
+        try {
+            int result = 0;
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
+            Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("select played_times from game where game_name='" + name + "' limit 1");
+            while (rs.next()) {
+                result = rs.getInt("played_times");
+            }
+            con.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
+    public String getPlayerByGame(String gameName){
+        try {
+            String result = "";
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select creator_username from game where game_name='" + gameName + "' limit 1");
+            while (rs.next()) {
+                result = rs.getString("creator_username");
+
+            }
+            con.close();
+            return result;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return gameName;
+    }
+
     public List<Questions> setUpGame(String name) {
         try {
             List<Questions> gottenQuestions = new ArrayList<Questions>();
             String[] gottenAnswers = new String[4];
-            List<Game> games = new ArrayList<Game>();
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://127.0.0.1:3306/letsfitupdated?serverTimezone=UTC", "matsnnik", "Torvald01");
             Statement stmt = con.createStatement();
@@ -42,9 +96,6 @@ public class JDBCConnector {
 
         }
         return null;
-    }
-    public void getUpGame(){
-
     }
 
     public List<Game> gamesByName(String input){
@@ -158,13 +209,13 @@ public class JDBCConnector {
             stmt.executeUpdate(sql);
             for(int i = 0; i < 6; i++){
                 String questionInsert = "INSERT INTO Question(question,"
-                        + " correct_answer,wrong_answer_one,wrong_answer_two,wrong_answer_three,"
+                        + " correct_answer,wrong_answer_one,wrong_answer_two,wrong_answer_three, "
                         + "game_name) VALUES ('" + questions[i].getQuestion() + "', '" + questions[i].getAnswers()[3]
                         + "', '" + questions[i].getAnswers()[0] +"', '" + questions[i].getAnswers()[1]
                         + "', '" + questions[i].getAnswers()[2] + "', '" + CurrentGame.getGamename() + "')";
                 stmt.executeUpdate(questionInsert);
             }
-            setScore(CurrentUser.getUsername(), CurrentUser.getScore() + 1);
+            setScorePlayer(CurrentUser.getUsername(), CurrentUser.getScore() + 1);
             CurrentUser.setScore(CurrentUser.getScore() + 1);
 
             con.close();
@@ -229,12 +280,26 @@ public class JDBCConnector {
             System.out.println(e);
         }
     }
-    public void setScore(String name, int score){
+    public void setScorePlayer(String name, int score){
         try{
             Connection con= DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC","matsnnik","Torvald01");
             Statement stmt=con.createStatement();
-            String sql = "UPDATE Player SET score=" + score + "where username='" + name +"'";
+            String sql = "UPDATE Player SET score=" + score + " where username='" + name +"'";
+            stmt.executeUpdate(sql);
+            con.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+    public void setScoreGame(String name, int score){
+        try{
+            Connection con= DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/letsfitupdated?serverTimezone=UTC","matsnnik","Torvald01");
+            Statement stmt=con.createStatement();
+            String sql = "UPDATE game SET played_times=" + score + " where game_name='" + name +"'";
             stmt.executeUpdate(sql);
             con.close();
         }
