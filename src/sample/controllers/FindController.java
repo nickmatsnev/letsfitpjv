@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.text.Text;
 import sample.*;
 
 public class FindController {
@@ -60,6 +61,7 @@ public class FindController {
     @FXML
     private TableColumn<Game, Integer> scoreColumn;
 
+
     @FXML
     private TableColumn<Game, String> creatorColumn;
 
@@ -80,6 +82,8 @@ public class FindController {
         JDBCConnector jc = new JDBCConnector();
         MegaController mc = new MegaController();
         nameAndScore.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
+
+
 
 
         outputTable.setEditable(true);

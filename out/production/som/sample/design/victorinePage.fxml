@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="460.0" prefWidth="747.0" style="-fx-background-color: #F4F7FB;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controllers.VictorineController">
    <children>
-      <Text fill="#434343" layoutX="408.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Java test">
+      <Text fx:id="gameNameText" fill="#434343" layoutX="408.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Java test">
          <font>
             <Font name="Montserrat Bold" size="29.0" />
          </font>

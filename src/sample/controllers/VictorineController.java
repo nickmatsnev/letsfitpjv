@@ -63,6 +63,9 @@ public class VictorineController {
     private Button logoutBtn;
 
     @FXML
+    private Text gameNameText;
+
+    @FXML
     private Button exitBtn;
 
     @FXML
@@ -71,12 +74,15 @@ public class VictorineController {
     JDBCConnector jdb = new JDBCConnector();
     private List<Questions> questions = jdb.setUpGame(CurrentGame.getGamename());
 
+
+
     private int nowQuestion = 0, correctAnswers;
     private String nowCorrectAnswer;
 
     @FXML
     public void initialize() {
         try {
+            question_text.setText(questions.get(0).getQuestion());
 
             nameAndScore.setText(CurrentUser.getUsername() + " / " + jdb.getScoreByUsername(CurrentUser.getUsername()));
 
@@ -113,6 +119,10 @@ public class VictorineController {
                 mc.toPage("findGame");
             });
 
+
+
+            gameNameText.setText(CurrentGame.getGamename());
+
             answerBtn.setOnAction(e -> {
                 RadioButton selectedRadioButton = (RadioButton) answers.getSelectedToggle();
                 if (selectedRadioButton != null) {
@@ -140,15 +150,13 @@ public class VictorineController {
 
                         question_text.setText("You had answered correctly " + correctAnswers + " out of " + questions.size() + " questions!");
                     } else {
-                        Questions[] array = new Questions[questions.size()];
-                        questions.toArray(array); // fill the array
-
 
                         nowQuestion++;
-                        nowCorrectAnswer = array[nowQuestion].correctAnswer();
+                        nowCorrectAnswer = questions.get(nowQuestion).correctAnswer();
 
-                        question_text.setText(array[nowQuestion].getQuestion());
-                        String[] answers = array[nowQuestion].getAnswers();
+                        question_text.setText(questions.get(nowQuestion).getQuestion());
+
+                        String[] answers = questions.get(nowQuestion).getAnswers();
 
                         List<String> intList = Arrays.asList(answers);
 
