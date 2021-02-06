@@ -84,6 +84,10 @@ public class VictorineController {
         try {
             question_text.setText(questions.get(0).getQuestion());
 
+            radio_btn_1.setText(questions.get(0).getAnswers()[0]);
+            radio_btn_2.setText(questions.get(0).getAnswers()[1]);
+            radio_btn_3.setText(questions.get(0).getAnswers()[2]);
+            radio_btn_4.setText(questions.get(0).getAnswers()[3]);
             nameAndScore.setText(CurrentUser.getUsername() + " / " + jdb.getScoreByUsername(CurrentUser.getUsername()));
 
             aboutBtn.setOnAction(e -> {
