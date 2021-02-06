@@ -120,8 +120,7 @@ public class RatingController {
         ratingGameColumn.setEditable(true);
 
 
-
-        //ObservableList<Stavka> oListStavaka = FXCollections.observableArrayList(listStavaka);
+        //creating collection for output in the table
         ObservableList<Player> players = FXCollections.observableArrayList(jc.bestUsers());
         ObservableList<Game> games = FXCollections.observableArrayList(jc.bestGames());
 
