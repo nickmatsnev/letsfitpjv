@@ -6,15 +6,28 @@ public class CurrentUser {
     private static int score;
     private static int games_created;
 
+    /**
+     *
+     * @param username
+     * @param password
+     */
     public CurrentUser(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String getUsername() {
         return username;
     }
 
+    /**
+     *
+     * @param username
+     */
     public static void setUsername(String username) {
         CurrentUser.username = username;
     }

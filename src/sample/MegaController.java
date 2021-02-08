@@ -22,6 +22,10 @@ public class MegaController {
         }
     }
 
+    /**
+     *
+     * @param page
+     */
     public void toPage(String page){
         if(prevStage != null){
             prevStage.close();

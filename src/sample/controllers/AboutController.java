@@ -60,6 +60,7 @@ public class AboutController {
         MegaController mc = new MegaController();
         nameAndScoreLabel.setText(CurrentUser.getUsername() + " : " + jc.getScore(CurrentUser.getUsername()));
 
+
         aboutBtn.setOnAction(e -> {
             mc.toPage("aboutPage");
         });

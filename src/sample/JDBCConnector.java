@@ -13,6 +13,11 @@ import java.util.List;
 
 public class JDBCConnector {
 
+    /**
+     *
+     * @param username
+     * @return
+     */
     public Integer getScoreByUsername(String username){
         try {
             int result = 0;
@@ -31,6 +36,11 @@ public class JDBCConnector {
         return 0;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public Integer getScoreByGameName(String name){
         try {
             int result = 0;
@@ -49,6 +59,11 @@ public class JDBCConnector {
         return 0;
     }
 
+    /**
+     *
+     * @param gameName
+     * @return
+     */
     public String getPlayerByGame(String gameName){
         try {
             String result = "";
@@ -68,6 +83,11 @@ public class JDBCConnector {
         return gameName;
     }
 
+    /**
+     *
+     * @param name
+     * @return
+     */
     public List<Questions> setUpGame(String name) {
         try {
             Connection con = DriverManager.getConnection(
@@ -94,6 +114,11 @@ public class JDBCConnector {
         return null;
     }
 
+    /**
+     *
+     * @param input
+     * @return
+     */
     public List<Game> gamesByName(String input){
         try {
 
@@ -119,6 +144,10 @@ public class JDBCConnector {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Game> bestGames(){
         try {
 
@@ -143,6 +172,10 @@ public class JDBCConnector {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<Player> bestUsers(){
         try {
             List<Player> players = new ArrayList<Player>();
@@ -163,6 +196,10 @@ public class JDBCConnector {
         return null;
     }
 
+    /**
+     *
+     * @param password
+     */
     public void setNewPassword( String password){
         try{
             Connection con= DriverManager.getConnection(
@@ -178,6 +215,12 @@ public class JDBCConnector {
             System.out.println(e);
         }
     }
+
+    /**
+     *
+     * @param username
+     * @return
+     */
     public String getBestGame(String username){
         try {
             String result = "";
@@ -197,6 +240,11 @@ public class JDBCConnector {
         return "empty";
     }
 
+    /**
+     *
+     * @param questions
+     * @param gameName
+     */
     public void setGameAndQuestions(Questions[] questions, String gameName ){
         try{
             Connection con= DriverManager.getConnection(
@@ -225,6 +273,11 @@ public class JDBCConnector {
 
     }
 
+    /**
+     *
+     * @param username
+     * @return
+     */
     public int getScore(String username){
         try {
             Connection con = DriverManager.getConnection(
@@ -243,6 +296,12 @@ public class JDBCConnector {
         return 0;
     }
 
+    /**
+     *
+     * @param name
+     * @param password
+     * @return
+     */
     public boolean loginCheck(String name, String password) {
         try {
             Connection con= DriverManager.getConnection(
@@ -263,6 +322,12 @@ public class JDBCConnector {
         }
         return false;
     }
+
+    /**
+     *
+     * @param name
+     * @param password
+     */
     public void setNewUser(String name, String password){
         try{
             Connection con= DriverManager.getConnection(
@@ -278,6 +343,12 @@ public class JDBCConnector {
             System.out.println(e);
         }
     }
+
+    /**
+     *
+     * @param name
+     * @param score
+     */
     public void setScorePlayer(String name, int score){
         try{
             Connection con= DriverManager.getConnection(
